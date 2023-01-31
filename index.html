@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="fonts" type="text/css" href="./assets/css/fonts.css"/>
+    <link rel="stylesheet" type="text/css" href= "./assets/css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/lightbox.css"/>
+    <title>A one week Game Jam blog</title>
+    <script src="./assets/js/jquery-3.6.3.min.js"></script>
+    <script id="loader" src="./assets/js/assets_loader.js"></script>
+    <script src="./assets/js/lightbox.js"></script>
+    <script src="./assets/js/post.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <aside id="left"></aside>
+    <main>
+      <h1 class="smallbox_light">
+        Welcome to my Dev Blog
+        <a href="/blog/" class="blog-link" data-post-id="1">Beitrag 1</a>
+      </h1>
+      <div class="box">
+        <p>
+          This is where I will document my progress as I work on my latest project, a
+          game created for a one week game jam. 
+        </p>
+        <p>
+          I will be using the
+          <a
+            href="https://godotengine.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Godot 4</a
+          >
+          engine to build the game. Godot is a powerful and flexible open-source
+          engine that allows for easy and efficient game development. 
+        </p>
+        <p>
+          Additionally, I will be using
+          <a
+            href="https://ephtracy.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >MagicaVoxel</a
+          >
+          to create the game's 3D art assets. MagicaVoxel is a lightweight and
+          user-friendly tool for creating voxel art.
+        </p>
+        <p>
+          To make the voxel art come to live, I will be using
+          <a
+            href="https://www.blender.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Blender</a
+          >
+          for cleaning up and animating the game's characters and objects.
+          Blender is a widely-used and highly-capable 3D modeling and animation
+          software.
+        </p>
+        <p>
+          The finished game will be hosted on
+          <a href="https://itch.io/" target="_blank" rel="noopener noreferrer"
+            >itch.io.</a
+          >
+        </p>
+      </div>
+    </main>
+    <aside id="sidebar"></aside>
+    <footer></footer>
+    <script>
+      lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<div id="logo">
+  <a href="./"><img src="./images/Rohten_logo.png" alt='"Rohten" logo' id="logo-img" /></a>
+</div>
+<div id="spacer"></div>
+<div class="navbar">
+  <a href="/">Home
+  <a href="./blog/">Blog</a>
+  <a href="#" id="about-us">About us</a>
+  <a href="https://itch.io/game-page">Itch.io Site</a>
+  <div id="about-us-dropdown" style="display: none">
+    <a href="./privacy-policy/">Privacy Policy</a>
+    <a href="./terms-of-service/">Term of Service</a>
+    <a href="./contact-us/">Contact Us</a>
+  </div>
+</div>
+<script>
+  $("#about-us").click(function () {
+    $("#about-us-dropdown").toggle();
+  });
+  $(document).click(function (event) {
+    if (!$(event.target).closest("#about-us-dropdown, #about-us").length) {
+      $("#about-us-dropdown").hide();
+    }
+  });
+</script>
