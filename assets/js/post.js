@@ -75,22 +75,15 @@ async function loadPostList() {
   document.querySelector("#blog-content").innerHTML = postListHtml.join("");
 }
 
-function getUrlParameter(name) {
-  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-  var results = regex.exec(location.search);
-  return results === null
-    ? ""
-    : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
 function BlogClick() {
-  document.addEventListener("click", (event) => {
-    if (!event.target.classList.contains("blog-link")) return;
-
-    event.preventDefault();
-    const postId = event.target.dataset.postId;
-    window.location.href = "/Website/blog/?postId=" + postId;
+  document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("click", function(event) {
+      if (event.target.classList.contains("blog-link")) {
+        event.preventDefault();
+        var postId = event.target.dataset.postId;
+        window.location.href = "/Website/blog/?postId=" + postId;
+      }
+    });
   });
 }
 
