@@ -37,9 +37,6 @@ h6 {
 h1,
 .h1 {
   margin: 0;
-}
-h1,
-.h1 {
   font-size: 1.6018066406rem;
 }
 @media screen and (min-width: 20rem) {
