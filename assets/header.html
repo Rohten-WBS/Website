@@ -1,5 +1,5 @@
 <div id="logo">
-  <a href="/Website/"><img src="/Website/images/Rohten_logo.png" alt='"Rohten" logo' id="logo-img" /></a>
+  <a href="./"><img src="/Website/images/Rohten_logo.png" alt='"Rohten" logo' id="logo-img" /></a>
 </div>
 <div id="spacer"></div>
 <div class="navbar">
@@ -14,12 +14,16 @@
   </div>
 </div>
 <script>
-  $("#about-us").click(function () {
-    $("#about-us-dropdown").toggle();
-  });
-  $(document).click(function (event) {
-    if (!$(event.target).closest("#about-us-dropdown, #about-us").length) {
-      $("#about-us-dropdown").hide();
-    }
-  });
+document.addEventListener("click", function (event) {
+  var dropdown = document.querySelector("#about-us-dropdown");
+  dropdown.style.display = dropdown.style.display === "none" ? "" : "none";
+});
+
+document.addEventListener("click", function (event) {
+  var dropdown = document.querySelector("#about-us-dropdown");
+  var aboutUs = document.querySelector("#about-us");
+  if (!event.target.closest("#about-us-dropdown, #about-us")) {
+    dropdown.style.display = "none";
+  }
+});
 </script>
