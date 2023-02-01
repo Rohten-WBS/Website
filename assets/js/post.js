@@ -78,6 +78,9 @@ function loadPostList() {
           BlogClick()
           console.log("Test3");
       },
+      error: function(){
+        console.log(textStatus);
+      },
 
     });
     console.log("Test4");
