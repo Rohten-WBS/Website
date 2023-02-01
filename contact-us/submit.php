@@ -24,5 +24,5 @@ if (isset($_POST['url']) && $_POST['url'] == '' && $_POST['message'] != '') {
     mail($contactmail, 'Contact Request', $body, $headers);
 }
 // otherwise, let the spammer think that they got their message through
-header('Location: /thank-you/');
+header('Location: /Website/thank-you/');
 exit('Redirecting you back');
