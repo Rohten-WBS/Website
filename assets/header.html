@@ -13,18 +13,18 @@
     <a href="/Website/contact-us/">Contact Us</a>
   </div>
 </div>
+</style>
 <script>
-  var aboutUs = document.querySelector("#about-us");
+document.querySelector("#about-us").addEventListener("click", function (event) {
+  event.preventDefault();
   var dropdown = document.querySelector("#about-us-dropdown");
-  
-  aboutUs.addEventListener("click", function(event) {
-    event.preventDefault();
-    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
-  });
-  
-  document.addEventListener("click", function(event) {
-    if (!event.target.closest("#about-us-dropdown, #about-us")) {
-      dropdown.style.display = "none";
-    }
-  });
+  dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+});
+
+document.addEventListener("click", function (event) {
+  var dropdown = document.querySelector("#about-us-dropdown");
+  if (!event.target.closest("#about-us-dropdown, #about-us")) {
+    dropdown.style.display = "none";
+  }
+});
 </script>
