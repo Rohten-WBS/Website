@@ -30,49 +30,43 @@ function loadPost(postId) {
   });
 }
 
-function loadPostList() {
-  $(document).ready(function () {
-    var postListHtml = "";
-    $.ajax({
-      url: "/Website/blog/posts/posts.json",
-      success: function (data) {
-        for (var i = 0; i < data.posts.length; i++) {
-          var postId = data.posts[i].id;
-          console.log(postId);
-          var postUrl = "/Website/blog/posts/" + postId + ".html";
-          console.log(postUrl);
-          $.get(postUrl, function (postData) {
-            console.log(postData);
-            var postTitle = $(postData).find(".post_title").text();
-            var postDate = $(postData).find(".post_date").text();
-            var id = data.posts[i].id;
-
-            var postContent = $(postData)
-              .find(".post_content")
-              .text()
-              .split(" ")
-              .slice(0, 51)
-              .join(" ");
-
-            postListHtml +=
-              '<section><div class="small_header"><a href="/blog/" class="blog-link" data-post-id="' +
-              postId +
-              '"><div class="prev_title">' +
-              postTitle +
-              '</div><div class="prev_date">(' +
-              postDate +
-              ')</div></a></div><div class="small_body"><p>' +
-              postContent +
-              '... <a href="/blog/?postId=' +
-              id +
-              '">  read more</a></div></section>';
-            $("#blog-content").html(postListHtml);
-          });
-        }
-        BlogClick();
-      },
-    });
+async function loadPostList() {
+  const postListHtml = [];
+  const data = await $.ajax({
+    url: "/Website/blog/posts/posts.json",
   });
+
+  for (let i = 0; i < data.posts.length; i++) {
+    const postId = data.posts[i].id;
+    const postUrl = "/Website/blog/posts/" + postId + ".html";
+    const postData = await $.get(postUrl);
+
+    const postTitle = $(postData).find(".post_title").text();
+    const postDate = $(postData).find(".post_date").text();
+    const postContent = $(postData)
+      .find(".post_content")
+      .text()
+      .split(" ")
+      .slice(0, 51)
+      .join(" ");
+
+    postListHtml.push(
+      `<section>
+        <div class="small_header">
+          <a href="/blog/" class="blog-link" data-post-id="${postId}">
+            <div class="prev_title">${postTitle}</div>
+            <div class="prev_date">(${postDate})</div>
+          </a>
+        </div>
+        <div class="small_body">
+          <p>${postContent}... <a href="/blog/?postId=${postId}">  read more</a></p>
+        </div>
+      </section>`
+    );
+  }
+
+  $("#blog-content").html(postListHtml.join(""));
+  BlogClick();
 }
 
 function getUrlParameter(name) {
