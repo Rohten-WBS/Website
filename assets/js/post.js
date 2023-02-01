@@ -1,4 +1,4 @@
-function getBlogPost() {;
+function getBlogPost() {
   var postId = getUrlParameter("postId");
   if (postId) {
     loadPost(postId);
@@ -8,14 +8,19 @@ function getBlogPost() {;
 }
 
 function loadPost(postId) {
-  $(document).ready(function () {
-    $.get("/Website/blog/posts/" + postId + ".html", function (data) {
-      var postTitle = $(data).find(".post_title").text();
-      var postDate = $(data).find(".post_date").text();
-      var postContent = $(data).find(".post_content").text();
+  document.addEventListener("DOMContentLoaded", function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/Website/blog/posts/" + postId + ".html", true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(xhr.responseText, "text/html");
+        var postTitle = doc.querySelector(".post_title").textContent;
+        var postDate = doc.querySelector(".post_date").textContent;
+        var postContent = doc.querySelector(".post_content").textContent;
 
-      $("#blog-content").html(
-        '<h1 class="box_light" >' +
+        document.querySelector("#blog-content").innerHTML =
+          '<h1 class="box_light">' +
           postTitle +
           "</h1>" +
           '<p class="small_body post_date">' +
@@ -23,9 +28,10 @@ function loadPost(postId) {
           "</p>" +
           '<article class="box"><p>' +
           postContent +
-          "</p></article>"
-      );
-    });
+          "</p></article>";
+      }
+    };
+    xhr.send();
   });
 }
 
