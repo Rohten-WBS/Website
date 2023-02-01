@@ -3,53 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="fonts" type="text/css" href="/Website/assets/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="/Website/assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/Website/assets/css/styles.css"
+    />
     <title>A one week Game Jam blog</title>
     <script src="/Website/assets/js/jquery-3.6.3.min.js"></script>
     <script src="/Website/assets/js/assets_loader.js"></script>
   </head>
   <body>
-      <header></header>
-      <aside id="left"></aside>
-      <main>
-        <div class="form box_light"><h1>Contact us!</h1>
-        <p>Please fill out the form to reach out to us.</p></div>
-        <form class="form box_light" action="submit.php" method="post">
-            <p class="form-row">
-              Your name:<br /><input
-                name="name"
-                required=""
-                type="text"
-                placeholder="Enter your Name"
-              />
-            </p>
-            <p class="form-row">
-              Your email:<br /><input
-                name="email"
-                pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
-                required=""
-                type="email"
-                placeholder="Enter a valid email address"
-              />
-            </p>
-            <p class="hidden">
-              Leave this empty:<br /><input name="url" type="text" />
-            </p>
-            <p class="form-row">
-              Your message:<br /><textarea
-                cols="50"
-                name="message"
-                required=""
-                rows="10"
-                placeholder="Enter your message"
-              ></textarea>
-            </p>
-            <p class="form-row">
-              <input class="submit-btn" type="submit" value="Send" />
-            </p>
-          </form>
-      </main>
-      <aside></aside>
-      <footer></footer>
+    <header></header>
+    <aside id="left"></aside>
+    <main>
+      <div class="form box_light">
+        <h1>Contact us!</h1>
+        <p>Please fill out the form to reach out to us.</p>
+        <p>
+          (This is only a form example since php is not working on Github
+          Pages!)
+        </p>
+      </div>
+      <form class="form box_light" action="submit.php" method="post">
+        <p class="form-row">
+          Your name:<br /><input
+            name="name"
+            required=""
+            type="text"
+            placeholder="Enter your Name"
+          />
+        </p>
+        <p class="form-row">
+          Your email:<br /><input
+            name="email"
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+            required=""
+            type="email"
+            placeholder="Enter a valid email address"
+          />
+        </p>
+        <p class="hidden">
+          Leave this empty:<br /><input name="url" type="text" />
+        </p>
+        <p class="form-row">
+          Your message:<br /><textarea
+            cols="50"
+            name="message"
+            required=""
+            rows="10"
+            placeholder="Enter your message"
+          ></textarea>
+        </p>
+        <p class="form-row">
+          <input class="submit-btn" type="submit" value="Send" />
+        </p>
+      </form>
+    </main>
+    <aside></aside>
+    <footer></footer>
   </body>
 </html>
