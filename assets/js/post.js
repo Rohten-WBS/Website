@@ -45,6 +45,8 @@ function loadPostList() {
             console.log(postData);
             var postTitle = $(postData).find(".post_title").text();
             var postDate = $(postData).find(".post_date").text();
+            var id = data.posts[i].id;
+
             var postContent = $(postData)
               .find(".post_content")
               .text()
@@ -62,7 +64,7 @@ function loadPostList() {
               ')</div></a></div><div class="small_body"><p>' +
               postContent +
               '... <a href="/blog/?postId=' +
-              postId +
+              id +
               '">  read more</a></div></section>';
             $("#blog-content").html(postListHtml);
           });
