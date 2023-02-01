@@ -31,60 +31,44 @@ function loadPost(postId) {
 }
 
 function loadPostList() {
-  console.log("Test2");
   $(document).ready(function () {
     var postListHtml = "";
-    console.log("Test2_ab");
     $.ajax({
-      url: "https://rohten-wbs.github.io/Website/blog/posts/",
+      url: "/Website/blog/posts/posts.json",
       success: function (data) {
-        console.log("Test2_b");
-        $(data)
-          .find("a")
-          .each(function () {
-            var postLink = $(this).attr("href");
-            console.log("Test2_c");
-            if (postLink.endsWith(".html")) {
-              var postId = postLink
-                .substr(0, postLink.length - 5)
-                .split("/")
-                .pop();
-              $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
-                var postTitle = $(postData).find(".post_title").text();
-                var postDate = $(postData).find(".post_date").text();
-                var postContent = $(postData)
-                  .find(".post_content")
-                  .text()
-                  .split(" ")
-                  .slice(0, 51)
-                  .join(" ");
+        data.forEach(function(postId) {
+          $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
+            var postTitle = $(postData).find(".post_title").text();
+            var postDate = $(postData).find(".post_date").text();
+            var postContent = $(postData)
+              .find(".post_content")
+              .text()
+              .split(" ")
+              .slice(0, 51)
+              .join(" ");
 
-                postListHtml +=
-                  '<section><div class="small_header"><a href="/blog/" class="blog-link" data-post-id="' +
-                  postId +
-                  '"><div class="prev_title">' +
-                  postTitle +
-                  '</div><div class="prev_date">(' +
-                  postDate +
-                  ')</div></a></div><div class="small_body"><p>' +
-                  postContent +
-                  '... <a href="/blog/?postId=' +
-                  postId +
-                  '">  read more</a></div></section>';
-                $("#blog-content").html(postListHtml);
-              });
-            }
+            postListHtml +=
+              '<section><div class="small_header"><a href="/blog/" class="blog-link" data-post-id="' +
+              postId +
+              '"><div class="prev_title">' +
+              postTitle +
+              '</div><div class="prev_date">(' +
+              postDate +
+              ')</div></a></div><div class="small_body"><p>' +
+              postContent +
+              '... <a href="/blog/?postId=' +
+              postId +
+              '">  read more</a></div></section>';
+            $("#blog-content").html(postListHtml);
           });
-          BlogClick()
-          console.log("Test3");
+        });
+        BlogClick();
       },
       error: function(textStatus, errorThrown ){
         console.log(textStatus);
         console.log(errorThrown);
       },
-
     });
-    console.log("Test4");
   });
 }
 
