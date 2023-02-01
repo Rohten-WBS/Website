@@ -36,7 +36,7 @@ function loadPostList() {
     var postListHtml = "";
     console.log("Test2_ab");
     $.ajax({
-      url: "/Website/blog/posts/",
+      url: "https://rohten-wbs.github.io/Website/blog/posts/",
       success: function (data) {
         console.log("Test2_b");
         $(data)
@@ -79,7 +79,6 @@ function loadPostList() {
           console.log("Test3");
       },
       error: function(textStatus, errorThrown ){
-        console.log(url);
         console.log(textStatus);
         console.log(errorThrown);
       },
