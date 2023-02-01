@@ -60,13 +60,13 @@ async function loadPostList() {
     postListHtml.push(
       `<section>
         <div class="small_header">
-          <a href="/blog/" class="blog-link" data-post-id="${postId}">
+          <a href="/Website/blog/" class="blog-link" data-post-id="${postId}">
             <div class="prev_title">${postTitle}</div>
             <div class="prev_date">(${postDate})</div>
           </a>
         </div>
         <div class="small_body">
-          <p>${postContent}... <a href="/Website/blog/?postId=${postId}">read more</a></p>
+          <p>${postContent}... <a href="/Website/blog/" class="blog-link" data-post-id="${postId}">read more</a></p>
         </div>
       </section>`
     );
