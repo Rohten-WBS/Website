@@ -18,6 +18,8 @@ window.onload = function() {
   var aboutUs = document.getElementById("about-us");
   var aboutUsDropdown = document.getElementById("about-us-dropdown");
 
+  aboutUsDropdown.style.display = "none";
+
   aboutUs.addEventListener("click", function() {
     aboutUsDropdown.style.display = aboutUsDropdown.style.display === "none" ? "" : "none";
   });

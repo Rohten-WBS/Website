@@ -352,7 +352,6 @@ footer {
 }
 
 #about-us-dropdown {
-  display: none;
   position: absolute;
   background-color: var(--bg_grey-2);
   margin: 15px 0 0 130px;
