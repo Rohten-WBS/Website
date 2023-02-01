@@ -36,8 +36,8 @@ function loadPostList() {
     $.ajax({
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
-        data.forEach(function(postId) {
-          $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
+        for (const postId in data) {
+          $.get(`/Website/blog/posts/${postId}.html`, function (postData) {
             var postTitle = $(postData).find(".post_title").text();
             var postDate = $(postData).find(".post_date").text();
             var postContent = $(postData)
@@ -46,7 +46,7 @@ function loadPostList() {
               .split(" ")
               .slice(0, 51)
               .join(" ");
-
+      
             postListHtml +=
               '<section><div class="small_header"><a href="/blog/" class="blog-link" data-post-id="' +
               postId +
@@ -61,8 +61,7 @@ function loadPostList() {
               '">  read more</a></div></section>';
             $("#blog-content").html(postListHtml);
           });
-        });
-        BlogClick();
+        }
       },
       error: function(textStatus, errorThrown ){
         console.log(textStatus);
