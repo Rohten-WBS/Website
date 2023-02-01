@@ -79,8 +79,9 @@ function loadPostList() {
           console.log("Test3");
       },
       error: function(textStatus, errorThrown ){
-        console.log("text: " + textStatus);
-        console.log("error: " + errorThrown);
+        console.log(url);
+        console.log(textStatus);
+        console.log(errorThrown);
       },
 
     });
