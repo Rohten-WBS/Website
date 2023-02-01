@@ -71,9 +71,7 @@ async function loadPostList() {
       </section>`
     );
   }
-
   document.querySelector("#blog-content").innerHTML = postListHtml.join("");
-  BlogClick();
 }
 
 function getUrlParameter(name) {
