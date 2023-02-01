@@ -38,7 +38,7 @@ function loadPostList() {
     $.ajax({
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
-        console.log(data);
+        console.log(data.length);
         for (var i = 0; i < data.length; i++) {
           var postId = data[i];
           console.log(postId);
