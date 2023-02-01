@@ -1,4 +1,5 @@
 function getBlogPost() {
+  console.log("Test");
   var postId = getUrlParameter("postId");
   if (postId) {
     loadPost(postId);
