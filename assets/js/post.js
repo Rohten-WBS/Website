@@ -31,16 +31,18 @@ function loadPost(postId) {
 }
 
 function loadPostList() {
+  console.log("Test2");
   $(document).ready(function () {
     var postListHtml = "";
     $.ajax({
       url: "/Website/blog/posts/",
       success: function (data) {
+        console.log("Test2_b");
         $(data)
           .find("a")
           .each(function () {
             var postLink = $(this).attr("href");
-
+            console.log("Test2_c");
             if (postLink.endsWith(".html")) {
               var postId = postLink
                 .substr(0, postLink.length - 5)
