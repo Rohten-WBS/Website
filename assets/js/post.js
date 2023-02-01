@@ -34,6 +34,7 @@ function loadPostList() {
   console.log("Test2");
   $(document).ready(function () {
     var postListHtml = "";
+    console.log("Test2_ab");
     $.ajax({
       url: "/Website/blog/posts/",
       success: function (data) {
