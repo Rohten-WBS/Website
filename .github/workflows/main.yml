@@ -1,0 +1,20 @@
+name: Generate Post List
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_post_list:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Generate Post List
+      run: |
+        cd blog/posts
+        POSTS=$(ls -1 *.html | awk -F . '{print "{\"id\": \"" $1 "\"}"}' | tr '\n' ',' | sed 's/.$//')
+        echo "{\"posts\": [$POSTS]}" > posts.json
