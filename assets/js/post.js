@@ -58,7 +58,7 @@ async function loadPostList() {
           </a>
         </div>
         <div class="small_body">
-          <p>${postContent}... <a href="/website/blog/?postId=${postId}">  read more</a></p>
+          <p>${postContent}... <a href="/Website/blog/?postId=${postId}">  read more</a></p>
         </div>
       </section>`
     );
