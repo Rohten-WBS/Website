@@ -37,20 +37,22 @@ function loadPost(postId) {
 
 async function loadPostList() {
   const postListHtml = [];
-  const data = await $.ajax({
-    url: "/Website/blog/posts/posts.json",
-  });
+  const data = await fetch("/Website/blog/posts/posts.json").then((res) =>
+    res.json()
+  );
 
   for (let i = data.posts.length - 1; i >= 0; i--) {
     const postId = data.posts[i].id;
     const postUrl = "/Website/blog/posts/" + postId + ".html";
-    const postData = await $.get(postUrl);
+    const postData = await fetch(postUrl).then((res) => res.text());
 
-    const postTitle = $(postData).find(".post_title").text();
-    const postDate = $(postData).find(".post_date").text();
-    const postContent = $(postData)
-      .find(".post_content")
-      .text()
+    const parser = new DOMParser();
+    const postHtml = parser.parseFromString(postData, "text/html");
+
+    const postTitle = postHtml.querySelector(".post_title").textContent;
+    const postDate = postHtml.querySelector(".post_date").textContent;
+    const postContent = postHtml.querySelector(".post_content")
+      .textContent.trim()
       .split(" ")
       .slice(0, 51)
       .join(" ");
@@ -64,14 +66,13 @@ async function loadPostList() {
           </a>
         </div>
         <div class="small_body">
-          <p>${postContent}... <a href="/Website/blog/?postId=${postId}">  read more</a></p>
+          <p>${postContent}... <a href="/Website/blog/?postId=${postId}">read more</a></p>
         </div>
       </section>`
     );
   }
 
-  $("#blog-content").html(postListHtml.join(""));
-  BlogClick();
+  document.querySelector("#blog-content").innerHTML = postListHtml.join("");
 }
 
 function getUrlParameter(name) {
@@ -84,12 +85,12 @@ function getUrlParameter(name) {
 }
 
 function BlogClick() {
-  $(document).ready(function () {
-    $(document).on("click", ".blog-link", function (event) {
-      event.preventDefault();
-      var postId = $(this).data("post-id");
-      window.location.href = "/Website/blog/?postId=" + postId;
-    });
+  document.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("blog-link")) return;
+
+    event.preventDefault();
+    const postId = event.target.dataset.postId;
+    window.location.href = "/Website/blog/?postId=" + postId;
   });
 }
 
