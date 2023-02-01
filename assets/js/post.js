@@ -9,7 +9,7 @@ function getBlogPost() {
 
 function loadPost(postId) {
   $(document).ready(function () {
-    $.get("/blog/posts/" + postId + ".html", function (data) {
+    $.get("/Website/blog/posts/" + postId + ".html", function (data) {
       var postTitle = $(data).find(".post_title").text();
       var postDate = $(data).find(".post_date").text();
       var postContent = $(data).find(".post_content").text();
@@ -33,7 +33,7 @@ function loadPostList() {
   $(document).ready(function () {
     var postListHtml = "";
     $.ajax({
-      url: "/blog/posts/",
+      url: "/Website/blog/posts/",
       success: function (data) {
         $(data)
           .find("a")
@@ -91,7 +91,7 @@ function BlogClick() {
     $(document).on("click", ".blog-link", function (event) {
       event.preventDefault();
       var postId = $(this).data("post-id");
-      window.location.href = "/blog/?postId=" + postId;
+      window.location.href = "/Website/blog/?postId=" + postId;
     });
   });
 }
