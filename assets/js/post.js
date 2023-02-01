@@ -36,11 +36,11 @@ function loadPostList() {
     $.ajax({
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
-        console.log(data.length);
         for (var i = 0; i < data.posts.length; i++) {
           var postId = data.posts[i];
           console.log(postId);
           $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
+            console.log(postData);
             var postTitle = $(postData).find(".post_title").text();
             var postDate = $(postData).find(".post_date").text();
             var postContent = $(postData)
@@ -67,11 +67,6 @@ function loadPostList() {
         }
         BlogClick();
       },
-      error: function(textStatus, errorThrown ){
-        console.log(textStatus);
-        console.log(errorThrown);
-      },
-
     });
   });
 }
