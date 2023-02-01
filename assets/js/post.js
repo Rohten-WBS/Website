@@ -45,7 +45,7 @@ function loadPostList() {
                 .substr(0, postLink.length - 5)
                 .split("/")
                 .pop();
-              $.get("/blog/posts/" + postId + ".html", function (postData) {
+              $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
                 var postTitle = $(postData).find(".post_title").text();
                 var postDate = $(postData).find(".post_date").text();
                 var postContent = $(postData)
