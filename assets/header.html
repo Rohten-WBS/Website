@@ -14,14 +14,17 @@
   </div>
 </div>
 <script>
-  document.addEventListener("click", function (event) {
-    var dropdown = document.querySelector("#about-us-dropdown");
-    var aboutUs = document.querySelector("#about-us");
+  var aboutUs = document.querySelector("#about-us");
+  var dropdown = document.querySelector("#about-us-dropdown");
   
-    if (event.target === aboutUs) {
-      dropdown.style.display = dropdown.style.display === "none" ? "" : "none";
-    } else if (!event.target.closest("#about-us-dropdown, #about-us")) {
+  aboutUs.addEventListener("click", function(event) {
+    event.preventDefault();
+    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+  });
+  
+  document.addEventListener("click", function(event) {
+    if (!event.target.closest("#about-us-dropdown, #about-us")) {
       dropdown.style.display = "none";
     }
   });
-  </script>
+</script>
