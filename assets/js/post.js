@@ -31,14 +31,18 @@ function loadPost(postId) {
 }
 
 function loadPostList() {
+  console.log("Test2");
   $(document).ready(function () {
     var postListHtml = "";
+    console.log("Test2_ab");
     $.ajax({
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
+        console.log(data);
         for (var i = 0; i < data.length; i++) {
-          console.log(data[i]);
-          $.get(`/Website/blog/posts/${postId}.html`, function (postData) {
+          var postId = data[i];
+          console.log(postId);
+          $.get("/Website/blog/posts/" + postId + ".html", function (postData) {
             var postTitle = $(postData).find(".post_title").text();
             var postDate = $(postData).find(".post_date").text();
             var postContent = $(postData)
@@ -47,7 +51,7 @@ function loadPostList() {
               .split(" ")
               .slice(0, 51)
               .join(" ");
-      
+
             postListHtml +=
               '<section><div class="small_header"><a href="/blog/" class="blog-link" data-post-id="' +
               postId +
@@ -63,12 +67,16 @@ function loadPostList() {
             $("#blog-content").html(postListHtml);
           });
         }
+        BlogClick();
+        console.log("Test3");
       },
       error: function(textStatus, errorThrown ){
         console.log(textStatus);
         console.log(errorThrown);
       },
+
     });
+    console.log("Test4");
   });
 }
 
