@@ -35,7 +35,7 @@ async function loadPostList() {
     url: "/Website/blog/posts/posts.json",
   });
 
-  for (let i = 0; i < data.posts.length; i++) {
+  for (let i = data.posts.length - 1; i >= 0; i--) {
     const postId = data.posts[i].id;
     const postUrl = "/Website/blog/posts/" + postId + ".html";
     const postData = await $.get(postUrl);
