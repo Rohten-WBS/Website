@@ -312,6 +312,11 @@ footer {
   display: block;
 }
 
+
+#about-us-dropdown.show {
+  display: block;
+}
+
 /* Navbar */
 
 .navbar {
