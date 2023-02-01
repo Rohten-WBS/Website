@@ -37,7 +37,7 @@ function loadPostList() {
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
         for (var i = 0; i < data.posts.length; i++) {
-          var postId = data.posts[i];
+          var postId = data.posts[i].id;
           console.log(postId);
           var postUrl = "/Website/blog/posts/" + postId + ".html";
           console.log(postUrl);
