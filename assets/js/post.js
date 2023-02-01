@@ -73,6 +73,7 @@ async function loadPostList() {
   }
 
   document.querySelector("#blog-content").innerHTML = postListHtml.join("");
+  BlogClick();
 }
 
 function getUrlParameter(name) {
