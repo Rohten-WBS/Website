@@ -75,6 +75,15 @@ async function loadPostList() {
   document.querySelector("#blog-content").innerHTML = postListHtml.join("");
 }
 
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  var results = regex.exec(location.search);
+  return results === null
+    ? ""
+    : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 function BlogClick() {
   document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("click", function(event) {
