@@ -36,8 +36,8 @@ function loadPostList() {
     $.ajax({
       url: "/Website/blog/posts/posts.json",
       success: function (data) {
-        for (const postId in data) {
-          console.log(postId);
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
           $.get(`/Website/blog/posts/${postId}.html`, function (postData) {
             var postTitle = $(postData).find(".post_title").text();
             var postDate = $(postData).find(".post_date").text();
