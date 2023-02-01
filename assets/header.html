@@ -14,20 +14,4 @@
   </div>
 </div>
 <script>
-window.onload = function() {
-  var aboutUs = document.getElementById("about-us");
-  var aboutUsDropdown = document.getElementById("about-us-dropdown");
-
-  aboutUsDropdown.style.display = "none";
-
-  aboutUs.addEventListener("click", function() {
-    aboutUsDropdown.style.display = aboutUsDropdown.style.display === "none" ? "" : "none";
-  });
-
-  document.addEventListener("click", function(event) {
-    if (!event.target.closest("#about-us-dropdown, #about-us")) {
-      aboutUsDropdown.style.display = "none";
-    }
-  });
-};
   </script>
