@@ -14,3 +14,12 @@
   </div>
 </div>
 
+<script>  document.addEventListener("click", function (event) {
+  var dropdown = document.querySelector("#about-us-dropdown");
+  var aboutUs = document.querySelector("#about-us");
+  if (event.target === aboutUs) {
+    dropdown.style.display = dropdown.style.display === "none" ? "" : "none";
+  } else if (!event.target.closest("#about-us-dropdown")) {
+    dropdown.style.display = "none";
+  }
+});</script>
