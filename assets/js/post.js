@@ -9,7 +9,7 @@ function getBlogPost() {
 
 function loadPost(postId) {
   $(document).ready(function () {
-    $.get("Website/blog/posts/" + postId + ".html", function (data) {
+    $.get("/Website/blog/posts/" + postId + ".html", function (data) {
       var postTitle = $(data).find(".post_title").text();
       var postDate = $(data).find(".post_date").text();
       var postContent = $(data).find(".post_content").text();
