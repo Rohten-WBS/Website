@@ -81,7 +81,7 @@ function BlogClick() {
     $(document).on("click", ".blog-link", function (event) {
       event.preventDefault();
       var postId = $(this).data("post-id");
-      window.location.href = "Website/blog/?postId=" + postId;
+      window.location.href = "/Website/blog/?postId=" + postId;
     });
   });
 }
